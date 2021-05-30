@@ -44,36 +44,57 @@ int rng(int lim)
 const int mod = 1'000'000'007;
 const int N = 3e5;
 
+bool mycmp(pair<int, int> a, pair<int, int> b)
+{
+    return (a.second < b.second);
+}
 void solution()
 {
-    string s;
-    int n;
-    cin >> n;
-    cin >> s;
-    int count = 0;
-    for (int i = 0; i <n; i++)
+    int mini, n, x;
+    cin >> mini >> n >> x;
+    vi v(n);
+    int i;
+    fo(i, n)
     {
-        if (s[i] == '0')
+        cin >> v[i];
+    }
+    pair<int, int> arr[x];
+    fo(i, x)
+    {
+        cin >> arr[i].first >> arr[i].second;
+    }
+    sort(arr, arr + x);
+    sort(arr, arr + x, mycmp);
+    reverse(arr, arr + x);
+    vvi ans(x + 1);
+    for (int i = 0; i < n; i++)
+    {
+        int sum = v[i];
+        int c = 0;
+        for (int j = 0; j < x; j++)
         {
-            count++;
+            if (v[i] >= mini)
+            {
+                break;
+            }
+            else
+            {
+                c++;
+                v[i] = v[i] + arr[j].first;
+                ans[i].push_back(j + 1);
+            }
+        }
+        ans[i].insert(ans[i].begin(), c);
+    }
+    for (int i = 0; i < ans.size(); i++)
+    {
+        for (int j = 0; j < ans[i].size(); j++)
+        {
+            cout << ans[i][j] << " ";
         }
     }
-    if (count % 2 == 0 || count == 1)
-    {
-        cout << "BOB"
-             << "\n";
-    }
-    if (count % 2 != 0)
-    {
-        cout << "ALICE"
-             << "\n";
-    }
-    else
-    {
-        cout << "DRAW"
-             << "\n";
-    }
 }
+
 int main()
 {
     ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);

@@ -44,46 +44,37 @@ int rng(int lim)
 const int mod = 1'000'000'007;
 const int N = 3e5;
 
-void solution()
-{
-    string s;
-    int n;
-    cin >> n;
-    cin >> s;
-    int count = 0;
-    for (int i = 0; i <n; i++)
-    {
-        if (s[i] == '0')
-        {
-            count++;
-        }
-    }
-    if (count % 2 == 0 || count == 1)
-    {
-        cout << "BOB"
-             << "\n";
-    }
-    if (count % 2 != 0)
-    {
-        cout << "ALICE"
-             << "\n";
-    }
-    else
-    {
-        cout << "DRAW"
-             << "\n";
-    }
-}
+vi v[N];
+int a[N];
 int main()
 {
     ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
     srand(chrono::high_resolution_clock::now().time_since_epoch().count());
 
-    int t;
+    ll t;
     cin >> t;
     while (t--)
     {
-        solution();
+        ll n;
+        cin >> n;
+
+        n = n * 2;
+        int v[n];
+        for (int i = 0; i < n; i++)
+        {
+            cin >> v[i];
+        }
+        sort(v, v + n);
+
+        for (ll i = 1; i < n / 2; i += 2)
+        {
+            swap(v[i], v[n - i - 1]);
+        }
+        for (ll i = 0; i < n; i++)
+        {
+            cout << v[i] << " ";
+        }
+        cout << "\n";
     }
 
     return 0;

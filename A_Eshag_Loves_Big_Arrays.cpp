@@ -44,35 +44,28 @@ int rng(int lim)
 const int mod = 1'000'000'007;
 const int N = 3e5;
 
+vi v[N];
+int a[N];
 void solution()
 {
-    string s;
-    int n;
+    ll n;
     cin >> n;
-    cin >> s;
-    int count = 0;
-    for (int i = 0; i <n; i++)
+    int v[n];
+    for (int i = 0; i < n; i++)
     {
-        if (s[i] == '0')
+        cin >> v[i];
+    }
+    sort(v, v + n);
+    int min = v[0];
+    int count = 1;
+    for (int i = 1; i < n; i++)
+    {
+        if (v[i] == min)
         {
             count++;
         }
     }
-    if (count % 2 == 0 || count == 1)
-    {
-        cout << "BOB"
-             << "\n";
-    }
-    if (count % 2 != 0)
-    {
-        cout << "ALICE"
-             << "\n";
-    }
-    else
-    {
-        cout << "DRAW"
-             << "\n";
-    }
+    cout << (n - count) << "\n";
 }
 int main()
 {

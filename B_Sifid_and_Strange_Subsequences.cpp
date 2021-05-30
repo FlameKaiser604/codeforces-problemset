@@ -44,36 +44,42 @@ int rng(int lim)
 const int mod = 1'000'000'007;
 const int N = 3e5;
 
+vi v[N];
+int a[N];
 void solution()
 {
-    string s;
-    int n;
+    ll n;
     cin >> n;
-    cin >> s;
-    int count = 0;
-    for (int i = 0; i <n; i++)
+    int v[n];
+    for (int i = 0; i < n; i++)
     {
-        if (s[i] == '0')
-        {
-            count++;
-        }
+        cin >> v[i];
     }
-    if (count % 2 == 0 || count == 1)
+    sort(v, v + n);
+    int min = v[0];
+    if (min >= 0)
     {
-        cout << "BOB"
-             << "\n";
+        cout << 1 << "\n";
     }
-    if (count % 2 != 0)
+    else if (v[n - 1] <= 0)
     {
-        cout << "ALICE"
-             << "\n";
+        cout << n << "\n";
     }
     else
     {
-        cout << "DRAW"
-             << "\n";
+        int abso = abs(v[0] + v[1]);
+        int j = n - 1;
+        while (j > 0)
+        {
+            if (abso < v[j])
+            {
+                j--;
+            }
+        }
+        cout << j << endl;
     }
 }
+
 int main()
 {
     ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
