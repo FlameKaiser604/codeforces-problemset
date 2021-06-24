@@ -48,19 +48,38 @@ vi v[N];
 int a[N];
 void solution()
 {
-    int i, j, k, n, m;
-    i=3;
-    j=5;
-    cout<<i+j;
+    ll n;
+    cin>>n;
+    vector<int>arr(n);
+    for(ll i =0;i<n;i++){
+        cin>>arr[i];
+    }
+    sort(arr.begin(),arr.end());
+    ll count=0;
+    for(int i=0;i<n;i++){
+        
+        count ++;
+    }
+    int res=count;
+ for(int i=0;i<n;i++){
+        
+        if(arr[i]==arr[0]){
+            res--;
+        }
+    }
+    cout<<res<<"\n";
 }
 int main()
 {
     ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
     srand(chrono::high_resolution_clock::now().time_since_epoch().count());
 
-    
+    ll t ;
+    cin>>t;
+    while (t--)
+    {
         solution();
-    
+    }
 
     return 0;
 }

@@ -48,19 +48,48 @@ vi v[N];
 int a[N];
 void solution()
 {
-    int i, j, k, n, m;
-    i=3;
-    j=5;
-    cout<<i+j;
+    ll n,d;
+    cin>>n>>d;
+    vector<int>arr(n);
+    for(ll i =0;i<n;i++){
+        cin>>arr[i];
+    }
+    sort(arr.begin(),arr.end());
+    ll i=0;
+    bool flag=true;
+    int sumi=arr[0]+arr[1];
+   while(i<n){
+       if(arr[i]<=d){
+           i++;
+       }
+       else if(arr[i]>d){
+           arr[i]=sumi;
+           if(sumi>)
+           flag=false;
+           break;
+       }
+       else{
+           i++;
+       }
+   }
+   if(flag==true){
+       cout<<"YES"<<"\n";
+   }
+   if(flag==false){
+       cout<<"NO"<<"\n";
+   }
 }
 int main()
 {
     ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
     srand(chrono::high_resolution_clock::now().time_since_epoch().count());
 
-    
+    ll t ;
+    cin>>t;
+    while (t--)
+    {
         solution();
-    
+    }
 
     return 0;
 }
